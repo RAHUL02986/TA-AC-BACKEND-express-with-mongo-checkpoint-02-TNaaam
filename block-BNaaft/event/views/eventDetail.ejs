@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header
+      class="d-flex justify-content-between align-items-baseline bg-success"
+    >
+      <div>
+        <a href="#" class="fs-1 text-decoration-none fw-bold">Event</a>
+      </div>
+      <nav class="">
+        <ul style="list-style-type: none" class="d-flex justify-content-around">
+          <li>
+            <a href="/">
+              <button type="button" class="fs-6 btn btn-primary mt-0">
+                Home
+              </button>
+            </a>
+          </li>
+
+          <li>
+            <a href="/event">
+              <button type="button" class="fs-6 btn btn-info mt-0">
+                Events
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <button type="button" class="ms-1 fs-6 btn btn-secondry">
+                Gallery
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/about">
+              <button type="button" class="ms-1 fs-6 btn btn-warning">
+                About Us
+              </button>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Title: <%= event.title%></h2>
+        <h3>Summary: <%= event.summary %></h3>
+        <h4>Host: <%= event.host %></h4>
+        <h5>StartDate: <%= event.startDate %></h5>
+        <h5>EndDate: <%= event.endDate %></h5>
+        <p>Category: <%= event.category %></p>
+        <p>Location:<%= event.location %></p>
+        <a href="/event/<%=event._id%>/edit">
+          <button class="btn btn-info">Edit</button></a
+        >
+        <a href="/event/<%= event._id%>/remark"
+          ><button class="btn btn-secondry">Remark</button></a
+        >
+        <a href="/event/<%=event.id%>"
+          ><button class="btn btn-danger">Delete</button>
+        </a>
+      </section>
+      <section>
+        <%event.remarks.forEach(remark=>{ %>
+        <h2>Remark:<%= remark.remark %></h2>
+        <h2>Author:<%= remark.author %></h2>
+        <h2>Likes:<%= remark.likes %></h2>
+
+        <% })%>
+      </section>
+    </main>
+    <footer class="p-3 mb-2 bg-info text-dark text-center mt-3">
+      &copy; All CopyRights Reserved 2023
+    </footer>
+  </body>
+</html>
